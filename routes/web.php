@@ -17,4 +17,6 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('categories', 'CategoryController');
 
-Auth::routes();
+Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::get('login', 'Auth\LoginController@showLoginForm');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');

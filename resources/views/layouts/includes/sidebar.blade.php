@@ -32,13 +32,12 @@
 
     <ul class="list-unstyled CTAs">
         <li>
-            <a href="#" class="logout" onclick="event.preventDefault();
+            <a href="{{ route('logout') }}" class="logout" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();"><i class="fas fa-power-off"></i> Cerrar sesión</a>
         </li>
     </ul>
 </nav>
-{{--
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        @csrf
-    </form>
---}}
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
