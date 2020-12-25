@@ -10,6 +10,8 @@ class Category extends Model
 
     protected $table = "categorias";
 
+    protected $connection = "mysql_dinamic";
+    
     public $timestamps = false;
     
     public function to_store($request)
