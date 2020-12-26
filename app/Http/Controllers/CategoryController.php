@@ -19,8 +19,14 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('categories.index', compact('categories'));
+        try{
+
+            $categories = Category::all();
+            return view('categories.index', compact('categories'));
+
+        }catch (\Exception $e) {
+            return view('categories.index')->with('message', 'Acceso Denegado, No puedes Listar Datos !!!');
+        }
     }
 
     /**
@@ -41,8 +47,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request, Category $category)
     {
-        $category->to_store($request);
-        return redirect()->route('categories.index');
+        try{
+
+            $category->to_store($request);
+            return redirect()->route('categories.index');
+        
+        }catch (\Exception $e) {
+            return view('categories.index')->with('message', 'Acceso Denegado, No puedes Guardar Datos !!!');
+        }
     }
 
     /**
@@ -76,9 +88,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::find($id);
-        $category->to_update($request);
-        return redirect()->route('categories.index');
+        try{
+
+            $category = Category::find($id);
+            $category->to_update($request);
+            return redirect()->route('categories.index');
+        
+        }catch (\Exception $e) {
+            return view('categories.index')->with('message', 'Acceso Denegado, No puedes Actualizar Datos !!!');
+        }
     }
 
     /**
@@ -89,8 +107,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->delete();
-        return redirect()->route('categories.index');
+        try{
+
+            $category = Category::find($id);
+            $category->delete();
+            return redirect()->route('categories.index');
+
+        }catch (\Exception $e) {
+            return view('categories.index')->with('message', 'Acceso Denegado, No puedes Eliminar Datos !!!');
+        }
     }
 }

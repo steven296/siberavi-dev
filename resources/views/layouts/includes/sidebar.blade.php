@@ -10,7 +10,7 @@
                 <img src="{{ asset('img/users/user.jpg') }}" class="img-responsive" style="border-radius: 50%;" alt="" width="70">
             </div>
             <div class="profile-usertitle">
-                <div class="profile-usertitle-name">Usuario</div>
+                <div class="profile-usertitle-name">{{ session('user')->User }}</div>
             </div>
             </div>
 
